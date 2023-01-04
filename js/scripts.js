@@ -9,14 +9,22 @@ function triangleTracker(event) {
   let sumOfSideBAndC = sideB + sideC;
 
   let triangleType;
-  if (sideA == sideB || sideA == sideC || sideB == sideC) {
-    triangleType = `Isosceles`;
-  } else if (sideA == sideB == sideC) {
-    triangleType = `Equilateral`;
-  } else if (sideA != sideB != sideC) {
-    triangleType = `Scalene`;
-  } else if (sumOfSideAAndB <= sideC || sumOfSideAAndC <= sideB || sumOfSideBAndC <= sideA) {
+  if (sumOfSideAAndB <= sideC || sumOfSideAAndC <= sideB || sumOfSideBAndC <= sideA) {
     triangleType = `Not a triangle`;
+  } else if (sideA == sideB && sideB == sideC) {
+    triangleType = `Equilateral`;
+  } else if (sideA == sideB || sideA == sideC || sideB == sideC) {
+    triangleType = `Isosceles`; 
+  } else if (sideA != sideB && sideB != sideC && sideA != sideC) {
+    triangleType = `Scalene`;
+  } else {
+    window.alert(`ERROR`);
   }
 
+  document.getElementById(`triangle-output`).innerText = triangleType;
 }
+
+window.addEventListener(`load`, function() {
+  const userInputs = this.document.getElementById(`user-inputs`);
+  userInputs.addEventListener(`submit`, triangleTracker);
+});
