@@ -20,7 +20,6 @@ function triangleTracker(event) {
   } else {
     window.alert(`ERROR`);
   }
-
   document.getElementById(`triangle-output`).innerText = triangleType;
 }
 
